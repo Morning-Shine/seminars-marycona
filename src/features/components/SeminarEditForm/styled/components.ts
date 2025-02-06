@@ -8,6 +8,10 @@ export const ModalInsideCont = styled.div`
   justify-content: space-around;
   row-gap: 1rem;
   width: 40vw;
+  h6 {
+    font-size: large;
+    font-weight: 600;
+  }
 `;
 
 export const ModalBtnsCont = styled.div`
@@ -17,7 +21,7 @@ export const ModalBtnsCont = styled.div`
   width: 50%;
 `;
 
-export const TitleInput = styled.input`
+export const OneStringInput = styled.input`
   width: 100%;
   outline: none;
   border: none;
@@ -33,6 +37,5 @@ export const DescInput = styled.textarea`
   outline: none;
   border: none;
   padding: 0 10px;
-  /* height: 3rem; */
   border-radius: 5px;
 `;

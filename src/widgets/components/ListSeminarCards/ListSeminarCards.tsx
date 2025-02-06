@@ -9,6 +9,7 @@ import { Loader, ErrorNotice, NoticeNoData } from 'shared/components';
 import { ListContainer, CardsWrapper } from './styled/components';
 import { ModalApplyDeny } from 'features/components/ModalApplyDeny/ModalApplyDeny';
 import { SeminarEditForm } from 'features/components';
+import { TSeminar } from 'shared/types';
 
 export const ListSeminarCards: React.FC = () => {
   const [activeCardDelete, setActiveCardDelete] = useState<
@@ -17,7 +18,11 @@ export const ListSeminarCards: React.FC = () => {
   const [activeCardUpdate, setActiveCardUpdate] = useState<
     number | undefined
   >();
-  const { data, isFetching, isError } = useGetSeminarsQuery();
+
+  const { data, isFetching, isError } = useGetSeminarsQuery('', {
+    refetchOnMountOrArgChange: true,
+  });
+
   const [deleteSeminar] = useDeleteSeminarMutation();
   const [updateSeminar] = useUpdateSeminarMutation();
 
@@ -25,9 +30,12 @@ export const ListSeminarCards: React.FC = () => {
     await deleteSeminar(activeCardDelete + '');
   };
 
-  const onUpdateCard = async (title: string, description: string) => {
-    console.log('activeCardUpdate', activeCardUpdate);
-    await updateSeminar({ id: activeCardUpdate, title, description });
+  const onUpdateCard = async (
+    title: string,
+    description: string,
+    photo: string
+  ) => {
+    await updateSeminar({ id: activeCardUpdate, title, description, photo });
   };
 
   return (
@@ -41,10 +49,8 @@ export const ListSeminarCards: React.FC = () => {
       {activeCardUpdate && (
         <SeminarEditForm
           setActiveCard={setActiveCardUpdate}
-          title={data?.find((sem) => sem.id === activeCardUpdate)?.title || ''}
-          description={
-            data?.find((sem) => sem.id === activeCardUpdate)?.description || ''
-          }
+          data={data as TSeminar[]}
+          cardNumber={activeCardUpdate}
           onUpdateCard={onUpdateCard}
         />
       )}

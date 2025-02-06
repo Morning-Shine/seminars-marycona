@@ -8,6 +8,7 @@ const seminarApi = api.injectEndpoints({
         url: 'seminars',
         method: 'GET',
       }),
+      providesTags: [{ type: 'seminars', id: 'LIST' }],
     }),
     updateSeminar: build.mutation<TSeminar, Partial<TSeminar>>({
       query: (data) => {
@@ -25,7 +26,7 @@ const seminarApi = api.injectEndpoints({
         url: `/seminars/${id}`,
         method: 'DELETE',
       }),
-      // invalidatesTags: [{ type: 'seminars', id: 'LIST' }],
+      invalidatesTags: [{ type: 'seminars', id: 'LIST' }],
     }),
   }),
 });

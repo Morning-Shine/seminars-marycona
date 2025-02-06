@@ -1,18 +1,19 @@
 import styled from '@emotion/styled';
 
-export const CardsWrapper = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 2rem;
-  overflow-y: auto;
-`;
-
 export const ListContainer = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow-y: hidden;
+`;
+
+export const CardsWrapper = styled.div`
+  width: inherit;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 2rem;
+  overflow-y: auto;
 `;
 
 export const ModalInsideCont = styled.div`

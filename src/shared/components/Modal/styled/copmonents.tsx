@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const ModalCont = styled.div`
-  border: 1px solid yellow;
   position: fixed;
   top: 0;
   width: 100%;

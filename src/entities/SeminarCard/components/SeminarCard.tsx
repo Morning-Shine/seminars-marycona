@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CardMockBGImg from 'shared/assets/imgs/card-mock.jpg';
 import {
   CardCont,
@@ -7,21 +7,9 @@ import {
   BtnDeleteCont,
   Header,
   Description,
-} from '../styled';
+} from '../styled/components';
 import { ButtonIcon } from 'shared/components/ButtonIcon';
 import { TSeminarCardProps } from './types';
-
-const mock = {
-  id: 8,
-  title: 'Современные тренды в уходе за кожей',
-  description:
-    'Семинар о новейших трендах в уходе за кожей и эффективных методах лечения.',
-  date: '15.02.2025',
-  time: '17:00',
-  photo: 'https://picsum.photos/id/8/750/730',
-};
-
-//TODO разобраться с загрузкой картинки
 
 export const SeminarCard: React.FC<TSeminarCardProps> = (props) => {
   const {
@@ -34,9 +22,18 @@ export const SeminarCard: React.FC<TSeminarCardProps> = (props) => {
     onDeleteClick,
     onUpdateClick,
   } = props;
+  const [backgroundImage, setBackgroundImage] = useState(CardMockBGImg);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = photo;
+    img.onload = () => {
+      setBackgroundImage(photo);
+    };
+  }, [photo]);
 
   return (
-    <CardCont photo={CardMockBGImg}>
+    <CardCont photo={backgroundImage}>
       <BtnDeleteCont>
         <ButtonIcon
           type="deny"
