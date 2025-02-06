@@ -14,6 +14,8 @@ export const CardsWrapper = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 2rem;
   overflow-y: auto;
+  z-index: 10;
+  padding-bottom: 20px;
 `;
 
 export const ModalInsideCont = styled.div`

@@ -32,7 +32,6 @@ export const BtnDeleteCont = styled.div`
   right: 0.5rem;
 `;
 
-
 export const DateInfo = styled.p`
   position: absolute;
   top: 0.5rem;
